@@ -2,8 +2,8 @@
 
 VERSION="5.15.102"
 
-# add deb-src to sources.list
-sed -i "/deb-src/s/# //g" /etc/apt/sources.list
+# # add deb-src to sources.list
+# sed -i "/deb-src/s/# //g" /etc/apt/sources.list
 
 # install dep
 apt update
