@@ -3,12 +3,12 @@
 VERSION="5.15.102"
 
 # # add deb-src to sources.list
-# sed -i "/deb-src/s/# //g" /etc/apt/sources.list
+sed -i "/deb-src/s/# //g" /etc/apt/sources.list
 
 # install dep
-apt update
-apt install -y wget git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison
-apt build-dep -y linux
+sudo apt update
+sudo apt install -y wget git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison
+sudo apt build-dep -y linux
 
 # change dir to workplace
 cd "${GITHUB_WORKSPACE}" || exit
