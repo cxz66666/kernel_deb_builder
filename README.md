@@ -10,8 +10,24 @@
 #### 2. 更新 config 文件
 在本地将您获取的 config 文件替换根目录下的 `config`，可以从您系统的 `/boot/config*` 文件复制，或者手动编辑
 
-#### 3. 编写自定义修改脚本
-当前 `/patch.d/` 目录下的修改脚本是只针对我自己的需求编写的，建议您先将其删掉，然后编写自己的脚本放在这个目录下，在脚本执行过程中会自动应用该目录下的所有脚本
+#### 3. 编写自定义path
+首先下载一份需要编译的内核源码，然后cp一份整个源码目录
+~~~bash
+xz -d linux-5.15.102.tar.xz
+tar -xvf linux-5.15.102.tar
+cp -r linux-5.15.102 linux-5.15.102-modify
+~~~
+
+之后在linux-5.15.102-modify中修改后，在上级目录中 生成patch
+~~~bash
+diff -Nur linux-5.15.102 linux-5.15.102-modify > xxx.patch
+~~~
+
+应用patch方法
+~~~bash
+cd linux-5.15.102
+path -p1 < /path/to/xxx.path
+~~~
 
 #### 4. 推送修改
 推送后，action 自动触发，可以在您的仓库页面的 `Actions` 选项卡查看进度详情。

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION=$(grep 'Kernel Configuration' < config | awk '{print $3}')
+VERSION="5.15.102"
 
 # add deb-src to sources.list
 sed -i "/deb-src/s/# //g" /etc/apt/sources.list
@@ -26,7 +26,7 @@ scripts/config --disable DEBUG_INFO
 
 # apply patches
 # shellcheck source=src/util.sh
-source ../patch.d/*.sh
+patch -p1 < ../patch.d/gpl.patch
 
 # build deb packages
 CPU_CORES=$(($(grep -c processor < /proc/cpuinfo)*2))
