@@ -29,6 +29,8 @@ cd linux-5.15.102
 path -p1 < /path/to/xxx.path
 ~~~
 
+然后将patch命令加入build_action.sh
+
 #### 4. 推送修改
 推送后，action 自动触发，可以在您的仓库页面的 `Actions` 选项卡查看进度详情。
 
